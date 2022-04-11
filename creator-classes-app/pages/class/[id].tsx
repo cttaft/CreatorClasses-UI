@@ -6,6 +6,7 @@ import { CreatorService } from "../../lib/CreatorService";
 import { CreatorClass } from "../../types/CreatorClass";
 import { ContentCreator } from "../../types/ContentCreator";
 import MeetCreator from "../../components/MeetCreator";
+import { useUserContext } from "../../context/UserContext";
 
 interface Props {
     currentClass: CreatorClass,
@@ -13,7 +14,7 @@ interface Props {
 };
 
 const ClassDetail: NextPage<Props> = ({ currentClass, creator }) => {
-
+    
     return (<Container>
         <Row>
             <Col><h2>{currentClass.className}</h2>

@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import { ClassesService } from "../lib/ClassesService";
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import './ClassList.module.css';
+import Link from "next/link";
 
 type Props = {
     userId: number
@@ -23,7 +24,7 @@ const ClassList: FunctionComponent<Props> = ({ userId }) => {
                                 <Card.Text>
                                     {selectedClass.classDescription}
                                 </Card.Text>
-                                <Button variant="primary" href={`/class/${selectedClass.classId}`}>Go to class</Button>
+                                <Link href={`/class/${selectedClass.classId}`}><Button variant="primary">Go to class</Button></Link>
                             </Card.Body>
                         </Card>
                     ))}
