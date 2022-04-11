@@ -12,11 +12,4 @@ export default StudentDashboard;
 
 
 
-export const getStaticProps: GetStaticProps = async () => { 
-    //call api to get classes to explore?
-    return {
-      props: {
-     
-      },
-    };
-  };
+

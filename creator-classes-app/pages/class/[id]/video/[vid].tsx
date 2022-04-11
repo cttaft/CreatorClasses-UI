@@ -3,8 +3,8 @@ import { ParsedUrlQuery } from "querystring";
 import { Container } from "react-bootstrap";
 import ReactPlayer from "react-player";
 import { ClassesService } from "../../../../lib/ClassesService";
-import { CreatorClass } from "../../../../Types/CreatorClass";
-import { Video } from "../../../../Types/Video";
+import { CreatorClass } from "../../../../types/CreatorClass";
+import { Video } from "../../../../types/Video";
 
 interface Props {
     currentClass: CreatorClass

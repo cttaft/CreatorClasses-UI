@@ -10,15 +10,11 @@ import { useUserContext } from "../../context/UserContext";
 
 const StudentLogin: NextPage = () => {
     
-    const { userId, userType, login } = useUserContext();
-    const [user, setUser] = useState(userId);
+    const { userId, login } = useUserContext();
+    const [user, setUser] = useState(0);
 
 
     const router = useRouter();
-    if (userId > 0) {
-        router.push(`/student/dashboard`);
-    }
-
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 

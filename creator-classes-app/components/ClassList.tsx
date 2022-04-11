@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { ClassesService } from "../../lib/ClassesService";
+import { ClassesService } from "../lib/ClassesService";
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import './ClassList.module.css';
 

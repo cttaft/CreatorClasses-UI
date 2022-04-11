@@ -2,13 +2,17 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { Container, Row, Col, Image, ListGroup } from "react-bootstrap";
 import { ClassesService } from "../../lib/ClassesService";
-import { CreatorClass } from "../../Types/CreatorClass";
+import { CreatorService } from "../../lib/CreatorService";
+import { CreatorClass } from "../../types/CreatorClass";
+import { ContentCreator } from "../../types/ContentCreator";
+import MeetCreator from "../../components/MeetCreator";
 
 interface Props {
-    currentClass: CreatorClass
+    currentClass: CreatorClass,
+    creator: ContentCreator
 };
 
-const ClassDetail: NextPage<Props> = ({ currentClass }) => {
+const ClassDetail: NextPage<Props> = ({ currentClass, creator }) => {
 
     return (<Container>
         <Row>
@@ -20,6 +24,7 @@ const ClassDetail: NextPage<Props> = ({ currentClass }) => {
             </Col>
             <Col><Image src={currentClass.classImage} fluid></Image></Col>
         </Row>
+        <MeetCreator creator={creator}></MeetCreator>
     </Container>);
 };
 export default ClassDetail;
@@ -27,10 +32,16 @@ export default ClassDetail;
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const cs = new ClassesService();
-    const currentClass = JSON.stringify(cs.getClassInfo(parseInt(context.params.id)));
+    const crs = new CreatorService();
+    const cl = cs.getClassInfo(parseInt(context.params.id));
+    const cr = crs.getCreatorInfo(cl.creatorId);
+  
+    const currentClass = JSON.stringify(cl);
+    const creator = JSON.stringify(cr);
     return {
         props: {
-            currentClass: JSON.parse(currentClass)
+            currentClass: JSON.parse(currentClass),
+            creator: JSON.parse(creator)
         }
     }
 
