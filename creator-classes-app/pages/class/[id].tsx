@@ -6,7 +6,6 @@ import { CreatorService } from "../../lib/CreatorService";
 import { CreatorClass } from "../../types/CreatorClass";
 import { ContentCreator } from "../../types/ContentCreator";
 import MeetCreator from "../../components/MeetCreator";
-import { useUserContext } from "../../context/UserContext";
 
 interface Props {
     currentClass: CreatorClass,

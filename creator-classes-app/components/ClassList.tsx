@@ -1,19 +1,19 @@
 import { FunctionComponent } from "react";
-import { ClassesService } from "../lib/ClassesService";
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import './ClassList.module.css';
 import Link from "next/link";
+import { useSession } from 'next-auth/react'
 
 type Props = {
-    userId: number
+    classes: CreatorClass[],
+    name : string
 }
-const ClassList: FunctionComponent<Props> = ({ userId }) => {
-    const cs = new ClassesService();
-    const classes = cs.getClassesForUser(userId);
+const ClassList: FunctionComponent<Props> = ({ classes, name }) => {
+  
     return (
 
         <div>
-            <h1>Your Classes</h1>
+            <h1>Your Classes : {name}</h1>
             <Container>
                 <Row>
                     {classes.map(selectedClass => (
