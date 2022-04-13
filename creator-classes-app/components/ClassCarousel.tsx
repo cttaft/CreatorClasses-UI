@@ -1,7 +1,6 @@
 import { FunctionComponent } from "react";
 import { Container, Carousel, Image, Row } from 'react-bootstrap';
-import Link from "next/link";
-import { useSession } from 'next-auth/react'
+import { CreatorClass } from "../types/CreatorClass";
 
 type Props = {
     classes: CreatorClass[]
@@ -13,7 +12,7 @@ const ClassCarousel: FunctionComponent<Props> = ({ classes }) => {
                  <Row xs={7} className="justify-content-md-center">
                 <Carousel>
                     {classes.map(selectedClass => 
-                        <Carousel.Item>
+                        <Carousel.Item key={selectedClass.classId}>
                             <Image fluid src={selectedClass.classImage}  style={{ height: '30rem', width: '100%'}}/>
                                 <Carousel.Caption>
                                  <h3>{selectedClass.className}</h3>

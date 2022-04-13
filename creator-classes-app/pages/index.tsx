@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { Button, Container, Row} from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 
 
 
@@ -19,38 +19,34 @@ const Home: NextPage = () => {
 
       <Container >
         <Row>
-        <h1 className={styles.title}>
-          Welcome to Creator Classes
-        </h1>
-        {' '}
+          <h1 className={styles.title}>
+            Welcome to Creator Classes
+          </h1>
+          {' '}
         </Row>
         <Row>
-        <h1>Are you a:</h1>
+          <h1>Are you a:</h1>
         </Row>
         <Row>
-        <h1 className="title">
-          <Link href="/creator/dashboard">
-            <a>Content Creator</a>
-          </Link>
-        </h1>
+          <h1 className="title">
+            <Link href="/creator/dashboard">
+              <a>Content Creator</a>
+            </Link>
+          </h1>
         </Row>
         <Row>
-        <h1>Or</h1>
-        <h1 className="title">
-          <Link href="/student/dashboard">
-            <a>Student</a>
-          </Link>
-        </h1>
+          <h1>Or</h1>
+          <h1 className="title">
+            <Link href="/student/dashboard">
+              <a>Student</a>
+            </Link>
+          </h1>
         </Row>
         <Row className="justify-content-md-center" xs={5}>
-        <Link href="/classes">
-        <Button> Explore Our Classes </Button>
-        </Link>
+          <Link href="/classes">
+            <Button> Explore Our Classes </Button>
+          </Link>
         </Row>
-            
-         
-     
-
       </Container>
     </div>
 

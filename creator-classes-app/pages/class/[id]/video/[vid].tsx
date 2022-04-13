@@ -15,7 +15,7 @@ const ClassDetail: NextPage<Props> = ({ currentClass, currentVideo }) => {
 
     return (<Container>
         <h1>{currentVideo.title}</h1>
-        <ReactPlayer url = {`${currentVideo.videoSrc}`}></ReactPlayer>
+        <ReactPlayer url={`${currentVideo.videoSrc}`}></ReactPlayer>
 
     </Container>);
 };
@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
     const cs = new ClassesService();
     const classIds = cs.getAllClassAndVideoIds();
-    const paths : Array<string | { params: ParsedUrlQuery; locale?: string }> = [];
+    const paths: Array<string | { params: ParsedUrlQuery; locale?: string }> = [];
     classIds.map((parentClassId) => {
         const classIdAsString = parentClassId.classId.toString();
         parentClassId.videoIds.map((v) => {

@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import './ClassList.module.css';
 import Link from "next/link";
-import { useSession } from 'next-auth/react'
+import { CreatorClass } from "../types/CreatorClass";
 
 type Props = {
     classes: CreatorClass[],
