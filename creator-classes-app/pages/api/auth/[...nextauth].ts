@@ -10,7 +10,7 @@ export default NextAuth({
       clientSecret: process.env.AZURE_AD_B2C_CLIENT_SECRET,
       primaryUserFlow: process.env.AZURE_AD_B2C_PRIMARY_USER_FLOW,
       protection: 'pkce',
-      authorization: { params: { scope: `https://${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com/api/demo.read https://${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com/api/demo.write offline_access openid` } },
+      authorization: { params: { scope: `https://creatorclass.onmicrosoft.com/43dadc70-c776-4720-9331-4310e3753bb1/access_as_user offline_access openid` } },
     }),
   ],
 
@@ -23,7 +23,6 @@ export default NextAuth({
   },
   callbacks: {
     async session({ session, token, user }) {
-
       session.accessToken = token.accessToken
       session.userId = token.oid;
       session.name = token.name;
@@ -31,7 +30,7 @@ export default NextAuth({
     },
     async jwt({ token, user, account, profile, isNewUser }) {
       if (account) {
-        token.accessToken = account.id_token;
+        token.accessToken = account.access_token;
       }
       if (profile) {
         token.oid = profile.oid;
