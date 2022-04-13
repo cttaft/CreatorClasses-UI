@@ -15,17 +15,20 @@ interface Props {
 };
 
 const StudentDashboard : NextPage<Props> = ({classes, username}) => {
-    const { data: session, status } = useSession({required:true});
+
+  const { data: session, status } = useSession({required:true});
 
     if (session) {
     return (
-    <ClassList classes = {classes} name = {username}></ClassList>);
+    <ClassList classes = {classes} name = {session.name}></ClassList>);
     }
 }; 
 
 
 export const getServerSideProps : GetServerSideProps = async (context) => {
+
   const session = await getSession(context);
+  
   //get from API...
   const classes = JSON.stringify([new CreatorClass(1234, "How to train your yorkie", 
   "https://www.petplate.com/wp-content/uploads/2021/03/AdobeStock_236757188.jpeg",
@@ -36,8 +39,7 @@ new CreatorClass(2345, "Nailing Jello to a Wall", "https://linkedstrategies.com/
 
   return {
     props: {
-      classes: JSON.parse(classes),
-      username : session.name
+      classes: JSON.parse(classes)
     }
   }
 }
