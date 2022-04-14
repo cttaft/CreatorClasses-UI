@@ -23,9 +23,11 @@ export default ClassDetail;
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
+    let classId : string = context.params!.id as string;
+    let vidId : string = context.params!.vid as string;
     const cs = new ClassesService();
-    const classMatch = cs.getClassInfo(parseInt(context.params.id));
-    const video = classMatch?.videos.find(a => a.videoId === parseInt(context.params.vid));
+    const classMatch = cs.getClassInfo(parseInt(classId));
+    const video = classMatch?.videos.find(a => a.videoId === parseInt(vidId));
     const currentClass = JSON.stringify(classMatch);
     const currentVideo = JSON.stringify(video);
     return {

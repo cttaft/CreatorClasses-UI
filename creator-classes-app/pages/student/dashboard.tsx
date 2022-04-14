@@ -16,7 +16,7 @@ const StudentDashboard: NextPage<Props> = ({ classes }) => {
 
   if (session) {
     return (
-      <ClassList classes={classes} name={session.name}></ClassList>);
+      <ClassList classes={classes} name={session.name as string}></ClassList>);
   }
 };
 
@@ -24,12 +24,19 @@ const StudentDashboard: NextPage<Props> = ({ classes }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const session = await getSession(context);
-  const response = await fetch('https://creator-classes-experience-api.azurewebsites.net/user/classes',
+  if (!session) {
+    return {
+      props: {
+        classes: []
+      }
+    }
+  }
+  const response = await fetch(`${process.env.EXPERIENCE_API_BASEURL}/subscriptions`,
     {
       headers: {
         method: 'GET',
         'Content-type': 'application/json',
-        'Authorization': `Bearer ${session.accessToken}`, 
+        'Authorization': `Bearer ${session.accessToken}`,
       }
     });
 

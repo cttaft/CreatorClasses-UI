@@ -2,6 +2,7 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
 import Link from "next/link";
 import { ContentCreator } from "../types/ContentCreator";
+import { FunctionComponent } from "react";
 
 type Props = {
     creator: ContentCreator

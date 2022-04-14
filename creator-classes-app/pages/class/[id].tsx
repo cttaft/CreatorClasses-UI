@@ -31,16 +31,17 @@ export default ClassDetail;
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const cs = new ClassesService();
     const crs = new CreatorService();
-    const cl = cs.getClassInfo(parseInt(context.params.id));
-    const cr = crs.getCreatorInfo(cl.creatorId);
+    const response = await fetch(`${process.env.EXPERIENCE_API_BASEURL}/classes/${context.params!.id}`);
 
-    const currentClass = JSON.stringify(cl);
+    const currentClass = await response.json()
+    console.log(currentClass);
+
+    const cr = crs.getCreatorInfo(currentClass.creatorId);
     const creator = JSON.stringify(cr);
     return {
         props: {
-            currentClass: JSON.parse(currentClass),
+            currentClass: currentClass,
             creator: JSON.parse(creator)
         }
     }

@@ -5,11 +5,10 @@ export default NextAuth({
   // https://next-auth.js.org/configuration/providers
   providers: [
     AzureADB2CProvider({
-      tenantId: process.env.AZURE_AD_B2C_TENANT_NAME,
-      clientId: process.env.AZURE_AD_B2C_CLIENT_ID,
-      clientSecret: process.env.AZURE_AD_B2C_CLIENT_SECRET,
-      primaryUserFlow: process.env.AZURE_AD_B2C_PRIMARY_USER_FLOW,
-      protection: 'pkce',
+      tenantId: process.env.AZURE_AD_B2C_TENANT_NAME!,
+      clientId: process.env.AZURE_AD_B2C_CLIENT_ID!,
+      clientSecret: process.env.AZURE_AD_B2C_CLIENT_SECRET!,
+      primaryUserFlow: process.env.AZURE_AD_B2C_PRIMARY_USER_FLOW!,
       authorization: { params: { scope: `https://creatorclass.onmicrosoft.com/43dadc70-c776-4720-9331-4310e3753bb1/access_as_user offline_access openid` } },
     }),
   ],
@@ -25,7 +24,7 @@ export default NextAuth({
     async session({ session, token, user }) {
       session.accessToken = token.accessToken
       session.userId = token.oid;
-      session.name = token.name;
+      session.name = token.userName;
       return session
     },
     async jwt({ token, user, account, profile, isNewUser }) {
@@ -34,7 +33,7 @@ export default NextAuth({
       }
       if (profile) {
         token.oid = profile.oid;
-        token.name = profile.given_name;
+        token.userName = profile.given_name;
       }
       return token
     }

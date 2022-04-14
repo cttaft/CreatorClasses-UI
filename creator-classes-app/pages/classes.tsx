@@ -20,10 +20,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 
   //get from API...
-  const response = await fetch('https://creator-classes-experience-api.azurewebsites.net/classes');
+  const response = await fetch(`${process.env.EXPERIENCE_API_BASEURL}/classes`);
 
   const classes = await response.json()
-  console.log(classes);
 
   return {
     props: {

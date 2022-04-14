@@ -1,13 +1,14 @@
 import { Navbar, NavDropdown, Container, Nav } from "react-bootstrap";
 import Link from 'next/link'
 import { useSession  } from 'next-auth/react'
+import { FunctionComponent } from "react";
 
 type LayoutProps = {
-    children: React.ReactNode,
-    sess : 123
+    children: React.ReactNode
   };
 
-const Layout: FunctionComponent = ({children} : LayoutProps) => {
+
+  export default function Layout({ children }: LayoutProps) {
    
     const {data: session, status} = useSession();
 
@@ -42,7 +43,6 @@ const Layout: FunctionComponent = ({children} : LayoutProps) => {
     )
 }
 
-export default Layout;
 
 
 
