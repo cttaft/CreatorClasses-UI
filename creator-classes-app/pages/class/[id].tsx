@@ -32,7 +32,7 @@ export default ClassDetail;
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const crs = new CreatorService();
-    const response = await fetch(`${process.env.EXPERIENCE_API_BASEURL}/classes/${context.params!.id}`);
+    const response = await fetch(`https://creator-classes-experience-api.azurewebsites.net/classes/${context.params!.id}`);
 
     const currentClass = await response.json()
     console.log(currentClass);

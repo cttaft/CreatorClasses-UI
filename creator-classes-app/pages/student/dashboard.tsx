@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     }
   }
-  const response = await fetch(`${process.env.EXPERIENCE_API_BASEURL}/subscriptions`,
+  const response = await fetch(`https://creator-classes-experience-api.azurewebsites.net/subscriptions`,
     {
       headers: {
         method: 'GET',
