@@ -12,6 +12,7 @@ export default NextAuth({
       authorization: { params: { scope: `https://creatorclass.onmicrosoft.com/43dadc70-c776-4720-9331-4310e3753bb1/access_as_user offline_access openid` } },
     }),
   ],
+  secret:process.env.SECRET,
 
   session: {
     // Use JSON Web Tokens for session instead of database sessions.
