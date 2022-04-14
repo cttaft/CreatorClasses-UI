@@ -7,7 +7,6 @@ import { CreatorClass } from "../../types/CreatorClass";
 
 interface Props {
   classes: CreatorClass[]
-  username: string
 };
 
 const StudentDashboard: NextPage<Props> = ({ classes }) => {
@@ -18,7 +17,9 @@ const StudentDashboard: NextPage<Props> = ({ classes }) => {
     return (
       <ClassList classes={classes} name={session.name as string}></ClassList>);
   }
+  return null;
 };
+export default StudentDashboard;
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -45,11 +46,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      classes: classes
+      classes: classes as CreatorClass[]
     }
   }
 }
-export default StudentDashboard;
+
 
 
 
