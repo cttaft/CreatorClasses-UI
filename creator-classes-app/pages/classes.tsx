@@ -3,6 +3,7 @@ import ClassCarousel from "../components/ClassCarousel";
 import { GetStaticProps, NextPage } from "next";
 import { Video } from "../types/Video";
 import { CreatorClass } from "../types/CreatorClass";
+import { useSession } from "next-auth/react";
 
 interface Props {
   classes: CreatorClass[]
@@ -10,8 +11,9 @@ interface Props {
 
 const ExploreClasses: NextPage<Props> = ({ classes }) => {
 
+  const { data: session } = useSession();
   return (
-    <ClassCarousel classes={classes}></ClassCarousel>);
+    <ClassCarousel classes={classes} session={session}></ClassCarousel>);
 
 };
 
