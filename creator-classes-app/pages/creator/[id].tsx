@@ -19,8 +19,8 @@ export default CreatorDetail;
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const crs = new CreatorService();
-
-    const cr = crs.getCreatorInfo(context.params.id);
+    const creatorId : string = context.params!.id as string;
+    const cr = crs.getCreatorInfo(parseInt(creatorId));
     const creator = JSON.stringify(cr);
     console.log(creator)
     return {
