@@ -13,7 +13,7 @@ const ClassCarousel: FunctionComponent<Props> = ({ classes }) => {
                 <Carousel>
                     {classes.map(selectedClass => 
                         <Carousel.Item key={selectedClass.classId}>
-                            <Image fluid src={selectedClass.classImage}  style={{ height: '30rem', width: '100%'}}/>
+                            <Image fluid src={selectedClass.classImage}  style={{width:'100%', height:'500px'}}/>
                                 <Carousel.Caption>
                                  <h3>{selectedClass.className}</h3>
                                 <p>{selectedClass.classDescription}</p>

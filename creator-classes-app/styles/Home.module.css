@@ -1,6 +1,15 @@
-.bgImage{
+.bgImageTop{
   height: 100%; 
   background-image: url('../public/keyBoard.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgImageMiddle
+{
+  height: 100%; 
+  background-image: url('../public/coffee-phone.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
