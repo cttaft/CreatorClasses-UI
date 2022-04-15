@@ -21,7 +21,7 @@ type LayoutProps = {
         loginHref = '/api/auth/signout';
     }
     return(
-        <Container>
+        <Container fluid>
         <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="/">Creator Classes</Navbar.Brand>
