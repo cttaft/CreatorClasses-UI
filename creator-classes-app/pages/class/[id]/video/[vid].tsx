@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { Container } from "react-bootstrap";
 import ReactPlayer from "react-player";
-import { ClassesService } from "../../../../lib/ClassesService";
 import { CreatorClass } from "../../../../types/CreatorClass";
 import { Video } from "../../../../types/Video";
 
@@ -23,16 +22,15 @@ export default ClassDetail;
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    let classId : string = context.params!.id as string;
-    let vidId : string = context.params!.vid as string;
-    const cs = new ClassesService();
-    const classMatch = cs.getClassInfo(parseInt(classId));
-    const video = classMatch?.videos.find(a => a.videoId === parseInt(vidId));
-    const currentClass = JSON.stringify(classMatch);
+    const classId : string = context.params!.id as string;
+    const vidId : string = context.params!.vid as string;
+    const response = await fetch(`https://creator-classes-experience-api.azurewebsites.net/classes/${classId}`);
+    const currentClass : CreatorClass = await response.json()
+    const video = currentClass?.videos.find(a => a.videoId === parseInt(vidId));
     const currentVideo = JSON.stringify(video);
     return {
         props: {
-            currentClass: JSON.parse(currentClass),
+            currentClass: currentClass,
             currentVideo: JSON.parse(currentVideo)
         }
     }
@@ -40,15 +38,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const cs = new ClassesService();
-    const classIds = cs.getAllClassAndVideoIds();
+    const response = await fetch(`https://creator-classes-experience-api.azurewebsites.net/classes`);
+    const allClasses : CreatorClass[] =  await response.json();
     const paths: Array<string | { params: ParsedUrlQuery; locale?: string }> = [];
-    classIds.map((parentClassId) => {
+    allClasses.map((parentClassId) => {
         const classIdAsString = parentClassId.classId.toString();
-        parentClassId.videoIds.map((v) => {
-            const videoId = v ?? 0;
+        parentClassId.videos.map((v) => {
+          
             paths.push({
-                params: { id: classIdAsString, vid: v.toString() },
+                params: { id: classIdAsString, vid: v.videoId.toString() },
             });
         });
     });

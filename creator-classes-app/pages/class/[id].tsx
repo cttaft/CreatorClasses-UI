@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { Container, Row, Col, Image, ListGroup } from "react-bootstrap";
-import { ClassesService } from "../../lib/ClassesService";
 import { CreatorService } from "../../lib/CreatorService";
 import { CreatorClass } from "../../types/CreatorClass";
 import { ContentCreator } from "../../types/ContentCreator";
@@ -49,12 +48,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const cs = new ClassesService();
-    const classIds: number[] = cs.getAllClassIds();
-    const paths = classIds.map((classId) => {
-        const classIdAsString = classId.toString();
+    const response = await fetch(`https://creator-classes-experience-api.azurewebsites.net/classes`);
+    const allClasses : CreatorClass[] =  await response.json();
+    const paths = allClasses.map((classRes) => {
         return {
-            params: { id: classIdAsString },
+            params: { id: classRes.classId.toString() },
         }
     })
     return { paths, fallback: false }
