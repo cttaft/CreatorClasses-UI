@@ -55,5 +55,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
             params: { id: classRes.classId.toString() },
         }
     })
-    return { paths, fallback: false }
+    return { paths, fallback: 'blocking' }
 }

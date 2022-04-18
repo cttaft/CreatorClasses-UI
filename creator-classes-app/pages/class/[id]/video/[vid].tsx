@@ -31,7 +31,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
             currentClass: currentClass,
-            currentVideo: JSON.parse(currentVideo)
+            currentVideo: JSON.parse(currentVideo),
+            revalidate: 10
         }
     }
 
@@ -51,5 +52,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
         });
     });
 
-    return { paths, fallback: false }
+    return { paths, fallback: 'blocking'}
 }

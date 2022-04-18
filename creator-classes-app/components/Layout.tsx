@@ -28,7 +28,10 @@ type LayoutProps = {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Link href="/student/dashboard"><a className="nav-link">Dashboard</a></Link>
+              <Link href="/student/dashboard"><a className="nav-link">Student Dashboard</a></Link>
+            </Nav>
+            <Nav className="me-auto">
+              <Link href="/creator/dashboard"><a className="nav-link">Creator Dashboard</a></Link>
             </Nav>
             <Nav className="me-auto">
                 <Link href={`${loginHref}`}>

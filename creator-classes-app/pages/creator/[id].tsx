@@ -25,7 +25,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     console.log(creator)
     return {
         props: {
-            creator: JSON.parse(creator)
+            creator: JSON.parse(creator),
+            revalidate: 10
         }
     }
 
@@ -40,5 +41,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
             params: { id: creatorIdAsString },
         }
     })
-    return { paths, fallback: false }
+    return { paths, fallback: 'blocking'  }
 }

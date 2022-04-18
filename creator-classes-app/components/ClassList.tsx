@@ -13,7 +13,7 @@ const ClassList: FunctionComponent<Props> = ({ classes, name }) => {
     return (
 
         <div>
-            <h1 className={`${styles.studentHeader}`}>{name}'s Classes</h1>
+            <h1 className={`${styles.studentHeader}`}>{name}`&apos;` Classes</h1>
             <Container fluid>
                 <Row className ="justify-content-md-center">
                     {classes.map(selectedClass => (
