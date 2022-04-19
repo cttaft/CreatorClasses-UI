@@ -15,8 +15,11 @@ const StudentDashboard: NextPage<Props> = ({ classes }) => {
 
   if (session) {
     return (
-      <ClassList classes={classes} name={session.name as string}></ClassList>);
-  }
+      <>
+         <h1>{session.name as string}&apos;s Classes</h1>
+         <ClassList classes={classes}></ClassList>);
+      </>
+    )}
   return null;
 };
 export default StudentDashboard;

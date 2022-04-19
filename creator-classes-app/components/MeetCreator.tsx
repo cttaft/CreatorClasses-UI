@@ -13,7 +13,7 @@ const MeetCreator: FunctionComponent<Props> = ({ creator }) => {
         <Row>
             <h2>Meet your Content Creator : <Link href={`/creator/${creator.creatorId}`}>{creator.name}</Link></h2>
 
-            <Row xs={2} md={4} lg={6}><Col><Image src={creator.image} fluid></Image></Col><Col>{creator.description}</Col></Row>
+            <Row xs={2} md={4} lg={6}><Col><Image src={creator.imageSrc} fluid></Image></Col><Col>{creator.description}</Col></Row>
         </Row>
     )
 }

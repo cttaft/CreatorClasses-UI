@@ -1,19 +1,16 @@
 import { FunctionComponent } from "react";
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
-import styles from './ClassList.module.css';
 import Link from "next/link";
 import { CreatorClass } from "../types/CreatorClass";
 
 type Props = {
-    classes: CreatorClass[],
-    name : string
+    classes: CreatorClass[]
 }
-const ClassList: FunctionComponent<Props> = ({ classes, name }) => {
+const ClassList: FunctionComponent<Props> = ({ classes }) => {
   
     return (
 
         <div>
-            <h1 className={`${styles.studentHeader}`}>{name}`&apos;` Classes</h1>
             <Container fluid>
                 <Row className ="justify-content-md-center">
                     {classes.map(selectedClass => (

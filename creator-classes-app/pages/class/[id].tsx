@@ -30,18 +30,18 @@ export default ClassDetail;
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const crs = new CreatorService();
+   
     const response = await fetch(`https://creator-classes-experience-api.azurewebsites.net/classes/${context.params!.id}`);
 
-    const currentClass = await response.json()
+    const currentClass : CreatorClass = await response.json()
     console.log(currentClass);
 
-    const cr = crs.getCreatorInfo(currentClass.creatorId);
-    const creator = JSON.stringify(cr);
+    const crResponse = await fetch(`https://creator-classes-experience-api.azurewebsites.net/creators/${currentClass.creatorId}`);
+    const creator = await crResponse.json();
     return {
         props: {
             currentClass: currentClass,
-            creator: JSON.parse(creator)
+            creator: creator
         }
     }
 
