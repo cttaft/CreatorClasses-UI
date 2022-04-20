@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { Container, Row, Col, Image, ListGroup } from "react-bootstrap";
-import { CreatorService } from "../../lib/CreatorService";
 import { CreatorClass } from "../../types/CreatorClass";
 import { ContentCreator } from "../../types/ContentCreator";
 import MeetCreator from "../../components/MeetCreator";
@@ -42,7 +41,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         props: {
             currentClass: currentClass,
             creator: creator
-        }
+        },
+        revalidate:10
     }
 
 }
