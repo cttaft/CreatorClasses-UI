@@ -59,8 +59,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      featuredCreators: allCreators
-    }
+      featuredCreators: allCreators.slice(0, 3)
+    },
+    revalidate : 10
   }
 }
 

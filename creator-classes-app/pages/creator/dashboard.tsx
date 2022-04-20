@@ -7,6 +7,7 @@ import { FormEvent, useState } from "react";
 import { Container, FormGroup, Form, Button, Spinner, Row, Card } from 'react-bootstrap';
 import UploadProfileImage from "../../components/UploadProfileImage";
 import AddClass from "../../components/AddClass";
+import { useRouter } from "next/router";
 
 
 
@@ -17,12 +18,13 @@ interface Props {
 
 const CreatorDashboard: NextPage<Props> = ({ profile, classes }) => {
 
-  const { data: session, status } = useSession({ required: true });
+  const { data: session } = useSession({ required: true });
 
 
   const [description, setDescription] = useState<string>(profile?.description);
   const [name, setName] = useState<string>(profile?.name);
   const [youtube, setYoutube] = useState<string>(profile?.youtubeUrl);
+  const router= useRouter();
 
 
 
@@ -30,7 +32,6 @@ const CreatorDashboard: NextPage<Props> = ({ profile, classes }) => {
     event.preventDefault();
     const cc = new CreatorProfile(0, name, "", description, youtube);
     const body = JSON.stringify(cc);
-    console.log(body);
     await fetch("https://creator-classes-experience-api.azurewebsites.net/creatorProfile", {
       method: "POST",
       headers: {
@@ -39,7 +40,7 @@ const CreatorDashboard: NextPage<Props> = ({ profile, classes }) => {
       },
       body
     });
-    
+    router.reload();
   }
 
 

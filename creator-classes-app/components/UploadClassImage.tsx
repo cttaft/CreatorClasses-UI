@@ -42,8 +42,8 @@ const UploadClassImage: FunctionComponent<Props> = ({ initialImageSrc, session, 
                 'Authorization': `Bearer ${session!.accessToken}`,
             }
         });
-        const updatedProf: CreatorProfile = await updated.json();
-        setCreateObjectURL(updatedProf.imageSrc);
+        const updatedClass: CreatorClass = await updated.json();
+        setCreateObjectURL(updatedClass.imageSrc);
         setImageLoading(false);
     };
 

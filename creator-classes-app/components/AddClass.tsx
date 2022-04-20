@@ -4,6 +4,7 @@ import { CreatorClass } from "../types/CreatorClass";
 import {Video} from "../types/Video"
 import { Session } from "next-auth";
 import UploadClassImage from "./UploadClassImage";
+import Router from "next/router";
 
 interface Props {
     creatorId : number
@@ -80,6 +81,8 @@ const AddClass: FunctionComponent<Props> = ({creatorId, session, classes}) => {
               });
         
           handleClose();
+          Router.reload();
+          
     }
 
 

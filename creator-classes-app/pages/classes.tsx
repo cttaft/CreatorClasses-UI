@@ -29,7 +29,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       classes: classes
-    }
+    },
+    revalidate : 10
   }
 }
 export default ExploreClasses;
