@@ -4,7 +4,6 @@ export class Video{
     description : string;
     videoSrc: string
     seconds: number;
-    timeAsString : string
 
     constructor(videoId : number, title : string, description : string, videoSrc : string, seconds: number ) {
         this.videoId = videoId;
@@ -12,10 +11,9 @@ export class Video{
         this.description = description;
         this.videoSrc = videoSrc
         this.seconds = seconds
-        this.timeAsString = this.timeDisplay()
       }
 
-      timeDisplay() : string
+      timeDisplay(): string 
       {
             var h = Math.floor(this.seconds / 3600);
             var m = Math.floor(this.seconds % 3600 / 60);
