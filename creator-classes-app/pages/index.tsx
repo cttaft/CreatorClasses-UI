@@ -4,7 +4,6 @@ import styles from '../styles/Home.module.css'
 import { Button, Col, Container, Row } from "react-bootstrap";
 import FeaturedCreators from '../components/FeaturedCreators';
 import { ContentCreator } from '../types/ContentCreator';
-import { CreatorService } from '../lib/CreatorService';
 import Link from 'next/link';
 
 interface Props {
@@ -55,11 +54,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 
 
-  const creators = JSON.stringify(new CreatorService().getAllCreators());
+  const response = await fetch(`https://creator-classes-experience-api.azurewebsites.net/creators`);
+  const allCreators : ContentCreator[] =  await response.json();
 
   return {
     props: {
-      featuredCreators: JSON.parse(creators)
+      featuredCreators: allCreators
     }
   }
 }
