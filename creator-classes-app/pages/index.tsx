@@ -32,14 +32,11 @@ const Home: NextPage<Props> = ({ featuredCreators }) => {
           <p>A platform to let content creators teach their secrets for success.</p>
         </Col>
       </Row>
-      <Row>
-      <div className="d-grid gap-2">
-        <Link href="/classes">
-          <Button variant="primary" size="lg">
-            Explore Our Classes
-          </Button>
-        </Link>
-      </div>
+      <Row className={`position-relative overflow-hidden p-3 p-md-5 m-md-3 ${styles.bgImageLearn}  text-center`}>
+        <h2 className="display-5 fw-normal">Gain A Following</h2>
+        <Col lg={12}>
+        <Button variant="outline-dark" className ={ `${styles.btn}`} href="/classes"><span>Start Learning</span></Button>
+        </Col>
       </Row>
 
     </Container >

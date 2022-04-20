@@ -14,3 +14,28 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
+.bgImageLearn
+{
+  height: 100%; 
+  background-image: url('../public/books.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
