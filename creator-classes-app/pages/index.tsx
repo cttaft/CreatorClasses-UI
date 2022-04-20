@@ -33,7 +33,7 @@ const Home: NextPage<Props> = ({ featuredCreators }) => {
         </Col>
       </Row>
       <Row className={`position-relative overflow-hidden p-3 p-md-5 m-md-3 ${styles.bgImageLearn}  text-center`}>
-        <h2 className="display-5 fw-normal">Gain A Following</h2>
+        <h2 className="display-2 fw-light">Gain A Following</h2>
         <Col lg={12}>
         <Button variant="outline-dark" className ={ `${styles.btn}`} href="/classes"><span>Start Learning</span></Button>
         </Col>
