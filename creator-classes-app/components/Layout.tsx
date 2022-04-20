@@ -27,11 +27,14 @@ type LayoutProps = {
           <Navbar.Brand href="/">Creator Classes</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Link href="/student/dashboard"><a className="nav-link">Student Dashboard</a></Link>
+          <Nav className="me-auto">
+              <Link href="/classes"><a className="nav-link">All Classes</a></Link>
             </Nav>
             <Nav className="me-auto">
-              <Link href="/creator/dashboard"><a className="nav-link">Creator Dashboard</a></Link>
+              <Link href="/student/dashboard"><a className="nav-link">Students</a></Link>
+            </Nav>
+            <Nav className="me-auto">
+              <Link href="/creator/dashboard"><a className="nav-link">Creators</a></Link>
             </Nav>
             <Nav className="me-auto">
                 <Link href={`${loginHref}`}>

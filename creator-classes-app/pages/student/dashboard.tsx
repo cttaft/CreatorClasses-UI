@@ -16,7 +16,7 @@ const StudentDashboard: NextPage<Props> = ({ classes }) => {
   if (session) {
     return (
       <>
-         <h1>{session.name as string}&apos;s Classes</h1>
+         <h1 className="text-center">{session.name as string}&apos;s Classes:</h1>
          <ClassList classes={classes}></ClassList>
       </>
     )}
