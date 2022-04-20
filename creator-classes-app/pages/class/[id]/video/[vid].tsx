@@ -44,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const paths: Array<string | { params: ParsedUrlQuery; locale?: string }> = [];
     allClasses.map((parentClassId) => {
         const classIdAsString = parentClassId.classId.toString();
-        parentClassId.videos.map((v) => {
+        parentClassId.videos?.map((v) => {
           
             paths.push({
                 params: { id: classIdAsString, vid: v.videoId.toString() },

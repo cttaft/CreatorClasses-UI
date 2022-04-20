@@ -17,7 +17,7 @@ const ClassDetail: NextPage<Props> = ({ currentClass, creator }) => {
             <Col><h2>{currentClass.className}</h2>
                 <Row><h5><b>Class Description:</b></h5></Row>
                 <Row><h5>{currentClass.classDescription}</h5></Row>
-                <Row><b>Videos</b><ListGroup as="ol">{currentClass.videos.map(a => <ListGroup.Item as="li" key={a.videoId}><Col><Link href={`/class/${currentClass.classId}/video/${a.videoId}`}>{a.title}</Link></Col><Col>{a.timeAsString}</Col></ListGroup.Item>
+                <Row><b>Videos</b><ListGroup as="ol">{currentClass.videos?.map(a => <ListGroup.Item as="li" key={a.videoId}><Col><Link href={`/class/${currentClass.classId}/video/${a.videoId}`}>{a.title}</Link></Col><Col>{a.timeAsString}</Col></ListGroup.Item>
                 )}</ListGroup></Row>
             </Col>
             <Col><Image src={currentClass.classImage} fluid></Image></Col>

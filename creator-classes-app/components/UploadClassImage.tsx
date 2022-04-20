@@ -1,8 +1,8 @@
 
 import { Image, Spinner } from "react-bootstrap";
 import { FunctionComponent, useState } from "react";
-import { CreatorProfile } from "../types/CreatorProfile";
 import { Session } from "next-auth";
+import { CreatorClass } from "../types/CreatorClass";
 
 type Props = {
     initialImageSrc: string | undefined,
@@ -43,7 +43,7 @@ const UploadClassImage: FunctionComponent<Props> = ({ initialImageSrc, session, 
             }
         });
         const updatedClass: CreatorClass = await updated.json();
-        setCreateObjectURL(updatedClass.imageSrc);
+        setCreateObjectURL(updatedClass.classImage);
         setImageLoading(false);
     };
 
