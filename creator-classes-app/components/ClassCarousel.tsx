@@ -1,6 +1,7 @@
-import { secureHeapUsed } from "crypto";
 import { Session } from "next-auth";
-import { FunctionComponent, MouseEventHandler, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { FunctionComponent, MouseEventHandler, useEffect, useState } from "react";
 import { Container, Carousel, Image, Row, Button } from 'react-bootstrap';
 import { CreatorClass } from "../types/CreatorClass";
 
@@ -10,7 +11,31 @@ type Props = {
 }
 const ClassCarousel: FunctionComponent<Props> = ({ classes, session }) => {
 
+    var router = useRouter();
 
+    const [currentSubs, setSubs] = useState<CreatorClass[]>([]);
+    useEffect(() => {
+        async function getSubs() {
+            let subs : CreatorClass[] = [];
+            if(session){
+                 subs = await fetchSubs(session);
+            }
+            setSubs(subs);
+        }
+        getSubs();
+  }, []);
+
+    const fetchSubs  = async (session: Session) => {
+        const response = await fetch(`https://creator-classes-experience-api.azurewebsites.net/subscriptions`,
+    {
+      headers: {
+        method: 'GET',
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${session.accessToken}`,
+      }
+    });
+        return await response.json()
+    }
 
     const subscribe = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -25,6 +50,8 @@ const ClassCarousel: FunctionComponent<Props> = ({ classes, session }) => {
                 }
             });
 
+            router.push(`/class/${button.name}`);
+
     };
 
     return (
@@ -38,7 +65,9 @@ const ClassCarousel: FunctionComponent<Props> = ({ classes, session }) => {
                             <Carousel.Caption>
                                 <h3>{selectedClass.className}</h3>
                                 <p>{selectedClass.classDescription}</p>
-                                <Button name={selectedClass.classId.toString()} onClick={subscribe} disabled={!session}>Subscribe</Button>
+                                {currentSubs.find(a => a.classId == selectedClass.classId) ? (<Link href={`/class/${selectedClass.classId}`}><Button variant="primary">Go to class</Button></Link>) : 
+                                (<Button name={selectedClass.classId.toString()} onClick={subscribe} disabled={!session}>Subscribe</Button>
+                                ) }
                             </Carousel.Caption>
 
                         </Carousel.Item>
