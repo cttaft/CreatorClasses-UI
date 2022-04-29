@@ -31,10 +31,10 @@ type LayoutProps = {
               <Link href="/classes"><a className="nav-link">All Classes</a></Link>
             </Nav>
             <Nav className="me-auto">
-              <Link href="/student/dashboard"><a className="nav-link">Students</a></Link>
+              <Link href="/student/dashboard"><a className="nav-link">Student Home</a></Link>
             </Nav>
             <Nav className="me-auto">
-              <Link href="/creator/dashboard"><a className="nav-link">Creators</a></Link>
+              <Link href="/creator/dashboard"><a className="nav-link">Creator Configuration</a></Link>
             </Nav>
             <Nav className="me-auto">
                 <Link href={`${loginHref}`}>
