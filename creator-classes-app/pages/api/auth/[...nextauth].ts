@@ -1,24 +1,5 @@
 import NextAuth from "next-auth"
-import { JWT } from "next-auth/jwt";
 import AzureADB2CProvider from "next-auth/providers/azure-ad-b2c";
-
-
-const refreshAccessToken = async (token : JWT) => {
-  const url = "creatorclass.b2clogin.com/creatorclass.onmicrosoft.com/<policy-name>/oauth2/v2.0/token?";
-  const body = new URLSearchParams({
-    client_id: process.env.AZURE_AD_B2C_CLIENT_ID!,
-    client_secret: process.env.AZURE_AD_B2C_CLIENT_SECRET!,
-    grant_type : "refresh_token",
-    refresh_token: token.refreshToken as string
-  });
-  const response = await fetch(url, {
-    method : "POST",
-    body: body
-  });
-
-  return response.json();
-}
-
 
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers
@@ -50,20 +31,12 @@ export default NextAuth({
     async jwt({ token, user, account, profile, isNewUser }) {
       if (account) {
         token.accessToken = account.access_token;
-        token.refreshToken = account.refresh_token;
-        token.accessTokenExpires = Date.now() + account.expires_at! * 1000;
       }
       if (profile) {
         token.oid = profile.oid;
         token.userName = profile.given_name;
       }
-
-      if(Date.now() < (token.accessTokenExpires as number))
-      {
-          return token;
-      }
-      
-      return refreshAccessToken(token);
+      return token
     }
 
     // Seconds - How long until an idle session expires and is no longer valid.
