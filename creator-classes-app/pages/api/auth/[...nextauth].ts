@@ -58,7 +58,7 @@ export default NextAuth({
         token.userName = profile.given_name;
       }
 
-      if(Date.now() < token.accessTokenExpires)
+      if(Date.now() < (token.accessTokenExpires as number))
       {
           return token;
       }
