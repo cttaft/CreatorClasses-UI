@@ -7,7 +7,7 @@ import styles from "./FeaturedCreators.module.css";
 type Props = {
     creators: ContentCreator[]
 }
-const ClassList: FunctionComponent<Props> = ({ creators }) => {
+const FeaturedCreators: FunctionComponent<Props> = ({ creators }) => {
 
     return (
         <Container fluid>
@@ -30,4 +30,4 @@ const ClassList: FunctionComponent<Props> = ({ creators }) => {
         </Container>
     )
 }
-export default ClassList;
+export default FeaturedCreators;

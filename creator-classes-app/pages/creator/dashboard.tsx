@@ -1,5 +1,4 @@
 import { GetServerSideProps, NextPage } from "next";
-import ClassList from "../../components/ClassList";
 import { useSession, getSession } from 'next-auth/react'
 import { CreatorClass } from "../../types/CreatorClass";
 import { CreatorProfile } from "../../types/CreatorProfile";

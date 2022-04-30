@@ -17,7 +17,7 @@ const StudentDashboard: NextPage<Props> = ({ classes }) => {
     return (
       <>
          <h1 className="text-center">{session.name as string}&apos;s Classes:</h1>
-         <ClassList classes={classes}></ClassList>
+         <ClassList classes={classes} showUnsubscribe={true} bearerToken={session.accessToken as string}></ClassList>
       </>
     )}
   return null;
