@@ -13,6 +13,7 @@ interface Props {
 }
 
 const AddClass: FunctionComponent<Props> = ({creatorId, session, classes}) => {
+    const [creatorsClasses, setCreatorsClasses] = useState(classes);
     const [show, setShow] = useState(false);
     const [className, setClassName] = useState("");
     const [classDescription, setClassDescription] = useState("");
@@ -24,8 +25,19 @@ const AddClass: FunctionComponent<Props> = ({creatorId, session, classes}) => {
     const [vidDescription, setVidDescription] = useState("");
     const [vidLength, setVidLength] = useState(0);
 
+    const getClasses = async() =>
+    {
+        return await fetch(`https://creator-classes-experience-api.azurewebsites.net/classes/byCreator/${creatorId}`,
+        {
+          headers: {
+            'Content-type': 'application/json',
+          }
+        }).then((res) => res.json()).then((data) => { return data; }).catch((error) => { return []; })
+    }
+
     const handleClose = async() => {
         setSelectedClass(null);
+        setCreatorsClasses(await getClasses());
         setShow(false);
     };
 
@@ -92,7 +104,7 @@ const AddClass: FunctionComponent<Props> = ({creatorId, session, classes}) => {
 
         <Container fluid>
                 <Row className ="justify-content-md-center">
-                    {classes.map(cardClass => (
+                    {creatorsClasses.map(cardClass => (
                         <Card key={cardClass.classId} style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={cardClass.classImage} style={{ height: '12rem'}} />
                             <Card.Body>
