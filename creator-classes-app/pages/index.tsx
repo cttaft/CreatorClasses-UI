@@ -50,10 +50,18 @@ export default Home
 export const getStaticProps: GetStaticProps = async (context) => {
 
 
+  const shuffleArray = (array : ContentCreator[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  }
 
   const response = await fetch(`https://creator-classes-experience-api.azurewebsites.net/creators`);
   const allCreators : ContentCreator[] =  await response.json();
-
+  shuffleArray(allCreators);
   return {
     props: {
       featuredCreators: allCreators.slice(0, 3)
