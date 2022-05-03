@@ -142,7 +142,9 @@ const AddClass: FunctionComponent<Props> = ({creatorId, session, classes}) => {
                     <Form.Label>Description</Form.Label>
                     <Form.Control as="textarea" rows={3} value={classDescription} onChange={(e)=> setClassDescription(e.target.value)} />
                 </Modal.Body>
-                <UploadClassImage initialImageSrc={selectedClass?.classImage} session={session} classId={selectedClass?.classId}></UploadClassImage>
+                {selectedClass ? (
+                <UploadClassImage initialImageSrc={selectedClass.classImage} session={session} classId={selectedClass.classId}></UploadClassImage>
+                ) : (<></>) }
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
