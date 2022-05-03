@@ -63,6 +63,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const allCreators : ContentCreator[] =  await response.json();
   shuffleArray(allCreators);
   return {
+    
     props: {
       featuredCreators: allCreators.slice(0, 3)
     },

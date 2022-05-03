@@ -25,6 +25,7 @@ const AddClass: FunctionComponent<Props> = ({creatorId, session, classes}) => {
     const [vidDescription, setVidDescription] = useState("");
     const [vidLength, setVidLength] = useState(0);
 
+
     const getClasses = async() =>
     {
         return await fetch(`https://creator-classes-experience-api.azurewebsites.net/classes/byCreator/${creatorId}`,
