@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "jest --config ./jest.config.js --env=jsdom && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "jest": "jest --config ./jest.config.js --env=jsdom"
