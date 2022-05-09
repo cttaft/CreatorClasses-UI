@@ -4,7 +4,6 @@ import styles from '../styles/Home.module.css'
 import { Button, Col, Container, Row } from "react-bootstrap";
 import FeaturedCreators from '../components/FeaturedCreators';
 import { ContentCreator } from '../types/ContentCreator';
-import Link from 'next/link';
 
 interface Props {
   featuredCreators: ContentCreator[]
