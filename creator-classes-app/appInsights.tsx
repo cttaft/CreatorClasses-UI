@@ -37,9 +37,9 @@ export function loadAppInsights(appInsights: ApplicationInsights, session?: Sess
  */
 export function initializeAppInsights(props: AppProps, session?: Session, config?: IConfiguration & IConfig): void {
   // if running on the server or in dev mode, don't initialize appInsights
-  // if (!IS_BROWSER || process.env.NODE_ENV !== 'production') {
-  //   return;
-  // }
+  if (!IS_BROWSER || process.env.NODE_ENV !== 'production') {
+    return;
+  }
 
   // if appInsights is already initialized, don't initialize again
   if (window.appInsights) {
