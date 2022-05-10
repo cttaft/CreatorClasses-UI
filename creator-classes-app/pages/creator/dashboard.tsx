@@ -7,12 +7,14 @@ import { Container, FormGroup, Form, Button, Spinner, Row, Card } from 'react-bo
 import UploadProfileImage from "../../components/UploadProfileImage";
 import AddClass from "../../components/AddClass";
 import { useRouter } from "next/router";
+import { Session } from "next-auth";
 
 
 
 interface Props {
   profile: CreatorProfile,
-  classes : CreatorClass[]
+  classes : CreatorClass[],
+  session: Session
 };
 
 const CreatorDashboard: NextPage<Props> = ({ profile, classes }) => {
@@ -110,7 +112,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       profile: profile,
-      classes: classes
+      classes: classes,
+      session: session
     }
   }
 }

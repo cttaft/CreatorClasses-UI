@@ -12,7 +12,6 @@ class SubscriptionService{
             'Authorization': `Bearer ${token}`,
           }
         }).then(data =>  data.json()).catch(err => []);
-        console.log(res);
         return res;
     
     }

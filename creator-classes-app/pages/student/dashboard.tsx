@@ -2,11 +2,13 @@ import { GetServerSideProps, NextPage } from "next";
 import ClassList from "../../components/ClassList";
 import { useSession, getSession } from 'next-auth/react'
 import { CreatorClass } from "../../types/CreatorClass";
+import { Session } from "next-auth";
 
 
 
 interface Props {
-  classes: CreatorClass[]
+  classes: CreatorClass[],
+  session: Session
 };
 
 const StudentDashboard: NextPage<Props> = ({ classes }) => {
@@ -49,7 +51,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      classes: classes as CreatorClass[]
+      classes: classes as CreatorClass[],
+      session :session
     }
   }
 }
